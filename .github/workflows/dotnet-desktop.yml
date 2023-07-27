@@ -104,7 +104,10 @@ jobs:
         Configuration: ${{ matrix.configuration }}
 
     - name: Zip built artifacts
-      run: zip -r -q library.zip ${{ env.Wap_Project_Directory }}\bin\${{ env.Configuration }}
+      uses: vimtor/action-zip@v1
+      with:
+        files: ${{ env.Wap_Project_Directory }}\bin\${{ env.Configuration }}
+        dest: library.zip
       env:
         Configuration: ${{ matrix.configuration }}
 
